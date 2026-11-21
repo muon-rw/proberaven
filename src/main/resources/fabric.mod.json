@@ -21,7 +21,7 @@
   ],
   "accessWidener": "proberaven.ct",
   "depends": {
-    "fabricloader": ">=${loader}",
+    "fabricloader": ">=0.14.0",
     "minecraft": "${minecraft}"
   }
 }
