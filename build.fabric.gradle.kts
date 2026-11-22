@@ -55,6 +55,8 @@ dependencies {
         "fabric-registry-sync-v0",
         "fabric-command-api-v2"
     )
+    // ProbeRaven doesn't use this; we compile against it only so the IDE can read Fabric's resource condition codecs.
+    modCompileOnly(fabricApi.module("fabric-resource-conditions-api-v1", sc.properties["deps.fabric_api"]))
 }
 
 loom {

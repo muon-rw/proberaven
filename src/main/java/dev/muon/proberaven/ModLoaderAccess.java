@@ -47,8 +47,11 @@ public sealed interface ModLoaderAccess {
 
         @Override
         public List<String> getLoadedModIds() {
+            // Fabric's isModLoaded (which resource conditions call) also matches provided aliases.
             return loader.getAllMods().stream()
-                .map(mod -> mod.getMetadata().getId())
+                .flatMap(mod -> java.util.stream.Stream.concat(
+                    java.util.stream.Stream.of(mod.getMetadata().getId()),
+                    mod.getMetadata().getProvides().stream()))
                 .distinct()
                 .sorted()
                 .toList();
